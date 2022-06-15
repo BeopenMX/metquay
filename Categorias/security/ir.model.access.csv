@@ -1,0 +1,2 @@
+"id","name","perm_create","perm_write","perm_unlink","perm_read","group_id/id","model_id/id"
+"__export__.ir_model_access_756_ba9a6b7e","nuevo","True","True","True","True","base.group_system","Categorias.model_categorias"

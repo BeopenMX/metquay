@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_api_odoo_integration_configuration_tree_view" model="ir.ui.view">
+		<field name="name">API odoo Integraion Configuration</field>
+		<field name="model">api.configuration</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+                 <field name="c_user_name" />
+                 <field name="c_user_password" />
+                 <field name="c_api_url" />
+			</tree>
+		</field>
+	</record>
+    <record id="view_api_odoo_integration_configuration_view" model="ir.ui.view">
+        <field name="name">API odoo Integration configuration Form View</field>
+        <field name="model">api.configuration</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="API Configuration">
+                            <field name="name" required="1"/>
+                            <field name="c_user_name" required="1"/>
+                            <field name="c_user_password" required="1"/>
+                            <field name="c_api_url" widget="url" required="1"/>
+                         </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="actionid_api_odoo_integration_configuration" model="ir.actions.act_window">
+        <field name="name">API Configuration</field>
+        <field name="res_model">api.configuration</field>
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a API Configuration.
+            </p>
+        </field>
+    </record>
+    <menuitem name="API Integration" id="api_odoo_integration_menuitem"
+              parent="sale.menu_sale_config" sequence="5"/>
+
+    <menuitem name="API Configuration" id="menuid_api_odoo_configuration"
+              parent="api_odoo_integration_menuitem" action="actionid_api_odoo_integration_configuration"
+              sequence="2"/>
+    </odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_config" model="ir.ui.view">
+        <field name="name">User Configuration</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                <field name="work_cal_id" groups="xmarts_vista_servicios.group_servicio"/>
+                <field name="workno"  groups="xmarts_vista_servicios.group_servicio"/>
+                <field name="metquay_status"  groups="xmarts_vista_servicios.group_servicio"/>
+                <field name="observations"  groups="xmarts_vista_servicios.group_servicio"/>
+            </xpath>
+            <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                <field name="calibracion"/>
+            </xpath>
+            <xpath expr="//notebook/page/field[@name='order_line']/form"
+                   position="inside">
+                <notebook>
+                    <page string='Instrumento del Cliente API Info' name='api_info'>
+                        <group>
+                            <group>
+                                <field name="api_message"/>
+                                <field name="api_request"/>
+                                <field name="api_response"/>
+                                <field name="exported_using_api"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string='Orden de servicio API Info' name='work_api_info'>
+                        <group>
+                            <group>
+                                <field name="work_api_message"/>
+                                <field name="work_api_request"/>
+                                <field name="work_api_response"/>
+                                <field name="exported_work_order_using_api"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="after">
+            <!--    <page string="Sale API Details" attrs="{'invisible':[('state','not in',('sale'))]}">-->
+                <page string="Info Metquay" groups="xmarts_vista_servicios.group_servicio">
+                    <group>
+                        <button type='object' class="fa fa-arrow-right oe_link"
+                                name="create_workorder" string="Crear Servicio Metquay"/>
+                        <button type='object' class="fa fa-arrow-right oe_link"
+                                name="create_customer_instrument_api" string="Crear Equipo en Metquay"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

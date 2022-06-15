@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tock_picking_config" model="ir.ui.view">
+        <field name="name">User Configuration</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Picking API Details">
+                    <group>
+                        <field name="exported_using_api" readonly="1" />
+			<!-- <field name="calibr_id" readonly="1" /> -->
+                        <field name="api_request" readonly="1" />
+                        <field name="api_response" readonly="1" />
+                        <field name="api_message" readonly="1" />
+                        <button type='object' class="fa fa-arrow-right oe_link" name="api_structure" string="Create Customer Instrument"/>
+                        <button type='object' class="fa fa-arrow-right oe_link" name="delete_api_structure" string="Delete Customer" invisible="1"/>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
