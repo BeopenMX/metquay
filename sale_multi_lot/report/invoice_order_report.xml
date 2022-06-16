@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="invoice_order_report" inherit_id="account.report_invoice_document">
+        <xpath expr="/t/t/div/table/thead/tr/th[4]" position="after">
+            <th>Lot/Serial No</th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[4]" position="after">
+
+            <td>
+                <t t-set="lot_names" t-value="','.join(map(lambda lot: lot.name ,line.lot_ids))"/>
+                <t t-esc="lot_names"></t>
+            </td>
+
+        </xpath>
+    </template>
+</odoo>

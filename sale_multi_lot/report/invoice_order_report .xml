@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_order_multi_lot_added_invoice_order_report_document" inherit_id="account.report_invoice_document">
+        <xpath expr="/t/t/div/table/thead/tr/th[4]" position="after">
+            <th>Lot/Serial No</th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[4]" position="after">
+        	<td>
+	      
+	        	<span t-field="line.lot_ids.name"/>
+            
+            </td>
+        </xpath>
+    </template>
+</odoo>

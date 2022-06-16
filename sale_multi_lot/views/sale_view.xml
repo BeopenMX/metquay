@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_production_lot_tree_from_sale_order" model="ir.ui.view">
+        <field name="name">stock.production.lot.tree.from.sale.order</field>
+        <field name="model">stock.production.lot</field>
+        <field name="arch" type="xml">
+            <tree string="Lots/Serial Numbers">
+                <field name="name"/>
+                <field name="product_qty" />
+                <field name="ref"/>
+                <field name="product_id"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="added_multi_selection_lot_ids_in_order_line_tree_view" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="after">
+                <field name="related_lot_ids" invisible="1" groups ="xmarts_vista_servicios.group_servicio"/>
+                <field name="lot_ids" widget="many2many_tags"  domain="[('product_id','=',product_id),('product_qty','&gt;',0),('id','in',related_lot_ids)]"  context="{'default_product_id': product_id,'tree_view_ref':'sale_multi_lot.stock_production_lot_tree_from_sale_order'}" groups ="xmarts_vista_servicios.group_servicio"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/form/group/group/field[@name='product_id']" position="after">
+                <field name="related_lot_ids" invisible="1" />
+                <field name="lot_ids" widget="many2many_tags" domain="[('product_id','=',product_id),('product_qty','&gt;',0),('id','in',related_lot_ids)]" context="{'default_product_id': product_id,'tree_view_ref':'sale_multi_lot.stock_production_lot_tree_from_sale_order'}" groups ="xmarts_vista_servicios.group_servicio"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
