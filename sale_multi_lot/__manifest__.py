@@ -8,8 +8,8 @@
     'data': [
         'views/sale_view.xml',
         'views/account_invoice.xml',
-        'report/sale_order_report.xml',
-        'report/invoice_order_report.xml',
+      #  'report/sale_order_report.xml',
+     #   'report/invoice_order_report.xml',
 
     ],
     'qweb': [],
